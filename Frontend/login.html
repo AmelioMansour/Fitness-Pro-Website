@@ -34,53 +34,33 @@
             <li><a class="nav-link mx-2" href="workouts.html">Workouts</a></li>
             <li><a class="nav-link mx-2" href="goals.html">Goals</a></li>
             <li><a class="nav-link mx-2" href="achievements.html">Achievements</a></li>
-            <li><a class="nav-link mx-2" href="login.html">Login</a></li>
+            <li><a class="nav-link mx-2 active-tab" href="login.html">Login</a></li>
             <!-- <li><a class="nav-link mx-2" href="home"><img src="./images/logo.png" alt="" width="200"></a></li> -->
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="container py-3">
-      <div class="text-center">
-        <h1>Welcome Back <span id="first-name" class="primary">__NAME__</span></h1>
+    <div class="container">
+      <div class="row">
+
       </div>
-    </div>
 
 
-    <div class="container-sm">
-      <div class="row justify-content-end py-3">
-        <div class="col-lg-4 col-sm-6 py-2 d-flex align-items-stretch">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Push</h5>
-              <h6 class="card-subtitle mb-2"></h6>
-              <canvas id="pushChart" width="400" height="400"></canvas>
-              <a href="more.html" class="card-link secondary" target="_blank">More Details</a>
-            </div>
-          </div>
+      <form>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Email" />
         </div>
-        <div class="col-lg-4 col-sm-6 py-2 d-flex align-items-stretch">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Pull</h5>
-              <h6 class="card-subtitle mb-2"></h6>
-              <canvas id="pullChart" width="400" height="400"></canvas>
-              <a href="more.html" class="card-link secondary" target="_blank">More Details</a>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
         </div>
-        <div class="col-lg-4 col-sm-6 py-2 d-flex align-items-stretch">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Legs</h5>
-              <h6 class="card-subtitle mb-2"></h6>
-              <canvas id="legsChart" width="400" height="400"></canvas>
-              <a href="more.html" class="secondary" target="_blank">More Details</a>
-            </div>
-          </div>
+        <div class="form-group">
+          <label class="form-check-label"><input type="checkbox" /> Remember me</label>
         </div>
-      </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
     </div>
 
     <script src="script.js"></script>

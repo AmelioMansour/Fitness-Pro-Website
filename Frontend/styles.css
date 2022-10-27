@@ -1,9 +1,23 @@
+:root {
+    --primary: #3F9FFE;
+    --secondary: #0080FF;
+}
+
 *{
     padding: 0;
     margin: 0;
     color: #212121 !important;
     background-color: #e7f4e4 !important;
 }
+.primary{
+    color: var(--primary) !important;
+}
+.secondary {
+    color: var(--secondary) !important;
+}
 .navigation a {
     font-size: 1.5rem !important;
+}
+.active-tab {
+    font-weight: bold !important;
 }
