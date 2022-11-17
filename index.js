@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-    res.render("/src/app");
+    res.render("/src/app.js");
     //__dirname : It will resolve to your project folder. 
 });
 app.get('/about', function (req, res) {
