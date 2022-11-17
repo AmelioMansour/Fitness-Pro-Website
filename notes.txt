@@ -1,0 +1,4 @@
+Dependencies 
+
+SvelteKit Npm
+Svelte-chartjs Npm
