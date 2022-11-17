@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 app.get('/', function (req, res) {
-    res.render("app");
+    res.render("/src/app");
     //__dirname : It will resolve to your project folder. 
 });
 app.get('/about', function (req, res) {
