@@ -3,7 +3,7 @@
 // Import essential libraries 
 import express from 'express';
 const app = express();
-const path = require('path');
+import path from 'path';
 const router = express.Router();
 // Setup essential routes 
 router.get('/', function (req, res) {
