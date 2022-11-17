@@ -4,7 +4,7 @@
 	"private": true,
 	"main": "index",
 	"scripts": {
-		"start": "node index",
+		"start": "node build/index",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -24,7 +24,6 @@
 		"bootstrap": "^5.2.2",
 		"chart.js": "^3.9.1",
 		"express": "^4.18.2",
-		"js": "^0.1.0",
 		"svelte-chartjs": "^3.0.1",
 		"sveltestrap": "^5.10.0"
 	}
