@@ -7,6 +7,9 @@ import path from 'path';
 const router = express.Router();
 // Setup essential routes 
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.get('/', function (req, res) {
     res.render("/src/app");
