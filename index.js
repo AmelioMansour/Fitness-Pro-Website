@@ -6,8 +6,10 @@ const app = express();
 import path from 'path';
 const router = express.Router();
 // Setup essential routes 
+
+
 router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/src/app.html'));
     //__dirname : It will resolve to your project folder. 
 });
 router.get('/about', function (req, res) {
