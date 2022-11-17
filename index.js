@@ -1,7 +1,7 @@
 //From website below
 //https://www.knowledgehut.com/blog/web-development/create-index-node-js
 // Import essential libraries 
-const express = require('express');
+import express from 'express';
 const app = express();
 const path = require('path');
 const router = express.Router();
