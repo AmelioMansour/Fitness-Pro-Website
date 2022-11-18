@@ -2,7 +2,7 @@
 	"name": "my-app",
 	"version": "0.0.1",
 	"private": true,
-	"main": "index",
+
 
 	"engines": {
 		"node": "16.x",
@@ -10,7 +10,7 @@
 
 	},
 	"scripts": {
-		"start": "npm .svelte-kit/build/index.js",
+		"start": "node index.js",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
