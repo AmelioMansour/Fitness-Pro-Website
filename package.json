@@ -3,6 +3,12 @@
 	"version": "0.0.1",
 	"private": true,
 	"main": "index",
+
+	"engines": {
+		"node": "16.x",
+		"npm":"8.x"
+		
+	},
 	"scripts": {
 		"start": "npm build/index.js",
 		"dev": "vite dev",
