@@ -7,10 +7,10 @@
 	"engines": {
 		"node": "16.x",
 		"npm":"8.x"
-		
+
 	},
 	"scripts": {
-		"start": "npm build/index.js",
+		"start": "npm .svelte-kit/build/index.js",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
