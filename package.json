@@ -10,7 +10,7 @@
 
 	},
 	"scripts": {
-		"start": "node index.js",
+		"start": "node /.svelte-kit/build/index.js",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
