@@ -2,3 +2,5 @@ Dependencies
 
 SvelteKit Npm
 Svelte-chartjs Npm
+
+use [slug] to pass props to a URL :)

@@ -2,13 +2,15 @@
     import { Line } from 'svelte-chartjs';
     export let inData = []
     export let inLabel = []
+    export let title
     export let width = 400
     export let height = 400
+    export let recentDate = true
     let data = {
     labels: inLabel,
     datasets: [
       {
-        label: 'Push day',
+        label: title,
         fill: true,
         lineTension: .4,
         backgroundColor: 'rgba(225, 204,230, .3)',
@@ -49,8 +51,9 @@
       CategoryScale
     );
   </script>
-
+  {#if recentDate}
   <h3 id="recentDate">{inLabel[inLabel.length-1]}</h3>
+  {/if}
   <Line {data} width={width} height={height} />
 
   <style>

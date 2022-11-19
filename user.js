@@ -21,7 +21,7 @@ class User{
     }
 }
 
-class workoutDay extends User {
+class workoutDay {
     name
     exercises = []
 
@@ -37,7 +37,7 @@ class workoutDay extends User {
 }
 
 
-class exercise extends workoutDays {
+class exercise {
     data = []
 
     constructor(name, data){
