@@ -1,7 +1,0 @@
-Dependencies 
-
-Chart.js (npm install)
-Node.js
-Bootstrap (linked cdn)
-
-

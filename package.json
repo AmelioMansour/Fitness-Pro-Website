@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"start": "node build/index.js",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -19,8 +20,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-node": "^1.0.0-next.100",
 		"bootstrap": "^5.2.2",
 		"chart.js": "^3.9.1",
+		"express": "^4.18.2",
 		"svelte-chartjs": "^3.0.1",
 		"sveltestrap": "^5.10.0"
 	}
