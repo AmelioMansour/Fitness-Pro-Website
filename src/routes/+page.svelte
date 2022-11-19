@@ -23,7 +23,7 @@ import Nav from "./nav.svelte";
       <h1 class="pb-3">Welcome Back <span id="first-name" class="primary">{name}</span></h1>
       <input id="newWorkoutDayInput" type="text">
       <br>
-      <button class="btn btn-dark my-3" id="submitNewWorkoutDay">Add New</button>
+      <button class="btn btn-dark my-3" id="submitNewWorkoutDay">Add New Day</button>
     </div>
 </div>
 

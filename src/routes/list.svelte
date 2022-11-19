@@ -51,7 +51,7 @@
 		outline: none;
 		border: none;
 	}
-	@media only screen and (max-width: 1300px){
+	@media only screen and (max-width: 900px){
 		#inputField{
 			width: 70%;
 		}
