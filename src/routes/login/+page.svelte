@@ -49,8 +49,8 @@ the account isnt already registered -->
 		<h1 id="passwordLabel">Password</h1>
 		<input type="password" bind:value={password} placeholder="Enter password" id="passwordInput" />
 		<br />
-		<input type="Submit" value="Submit" id="submitLogin" onclick={addUser} />
-		<!-- <button on:click={login} class="my-4" id="submitLogin"> Submit </button> -->
+		<!-- <input type="Submit" value="Submit" id="submitLogin" onclick={addUser} /> -->
+		<button on:click={login} class="my-4" id="submitLogin"> Submit </button>
 	</form>
 	<p>{firstName}</p>
 	<p>{lastName}</p>
