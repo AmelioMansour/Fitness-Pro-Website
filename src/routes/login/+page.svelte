@@ -38,7 +38,7 @@
 
 <div class="container text-center">
 
-	<form action="/createaccount" method="post">
+	<form action="../createaccount" method="post">
 		<!-- Login on form submission. -->
 		<!-- Either have login make a new account if username and password not same
     or have a seperate register page, or ask them if they want to make a new account because
