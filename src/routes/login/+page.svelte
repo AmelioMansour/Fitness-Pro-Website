@@ -8,7 +8,7 @@
 		//IF VERIFY LOGIN
 	}
 
-	function addUser() {
+	function addUser(f,l,u,p) {
 		//start of mongdb connection stuff. This part will be the same everytime interacting with db
 		const { MongoClient, ServerApiVersion } = require('mongodb');
 		const uri =
@@ -23,10 +23,10 @@
 		const collection = client.db('FitnessPro').collection('Users');
 		// perform actions on the collection object
 		const post = {
-			"FirstName": firstName,
-			"LastName": lastName,
-			"Username": username,
-			"Password": password
+			"FirstName": f,
+			"LastName": l,
+			"Username": u,
+			"Password": p
 		}
         collection.insertOne(post);
         client.close();
@@ -35,7 +35,7 @@
 
 <Nav active="login" />
 <div class="container text-center">
-	<form action="/" method="POST">
+	<form onsubmit="return addUser(firstname,lastname,username,password)">
 		<!-- Login on form submission. -->
 		<!-- Either have login make a new account if username and password not same
     or have a seperate register page, or ask them if they want to make a new account because
@@ -50,7 +50,7 @@ the account isnt already registered -->
 		<input type="password" bind:value={password} placeholder="Enter password" id="passwordInput" />
 		<br />
 		<!-- <input type="Submit" value="Submit" id="submitLogin" onclick={addUser} /> -->
-		<button on:click={login} class="my-4" id="submitLogin"> Submit </button>
+		<button on:click={addUser(firstName,lastName,username,password)} class="my-4" id="submitLogin"> Submit </button>
 	</form>
 	<p>{firstName}</p>
 	<p>{lastName}</p>
