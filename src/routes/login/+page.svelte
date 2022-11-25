@@ -7,7 +7,7 @@
 	function login() {
 		//IF VERIFY LOGIN
 	}
-
+//Not being used, maybe try
 	function addUser(f,l,u,p) {
 		//start of mongdb connection stuff. This part will be the same everytime interacting with db
 		const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -38,7 +38,7 @@
 
 <div class="container text-center">
 
-	<form action="../createaccount" method="post">
+	<form action="/createaccount" method="post">
 		<!-- Login on form submission. -->
 		<!-- Either have login make a new account if username and password not same
     or have a seperate register page, or ask them if they want to make a new account because
