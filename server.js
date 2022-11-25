@@ -18,4 +18,16 @@ app.listen(port, () => {
    console.log(`Server is up at port ${port}`);
 });
 
-app.post
+app.post("/createaccount/", (req, res) => {
+   const collection = client.db('FitnessPro').collection('Users');
+   // perform actions on the collection object
+   const post = {
+      "FirstName": req.body.first,
+      "LastName": req.body.last,
+      "Username": req.body.user,
+      "Password": req.body.pass
+   }
+   collection.insertOne(post);
+   client.close();
+
+});
