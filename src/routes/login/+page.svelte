@@ -23,10 +23,10 @@
 		const collection = client.db('FitnessPro').collection('Users');
 		// perform actions on the collection object
 		const post = {
-			FirstName: firstName,
-			LastName: lastName,
-			Username: username,
-			Password: password
+			"FirstName": firstName,
+			"LastName": lastName,
+			"Username": username,
+			"Password": password
 		};
         collection.insertOne(post);
         client.close();
