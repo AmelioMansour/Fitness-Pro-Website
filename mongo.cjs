@@ -16,7 +16,7 @@
 function addUser(f, l, u, p) {
     const { MongoClient, ServerApiVersion } = require('mongodb');
     const uri =
-        'mongodb+srv://fitnesspro:Sammy123@fitnesspro-cluster.ylcv3h5.mongodb.net/?retryWrites=true&w=majority';
+        'mongodb+srv://fitnesspro:<PASS>@fitnesspro-cluster.ylcv3h5.mongodb.net/?retryWrites=true&w=majority';
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
