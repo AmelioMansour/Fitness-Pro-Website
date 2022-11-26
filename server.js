@@ -20,7 +20,7 @@ app.listen(port, () => {
    console.log(`Server is up at port ${port}`);
 });
 
-app.post("/createaccount/",bodyParser.urlencoded({extended: false}) ,(req, res, next) => {
+app.post("/createaccount",bodyParser.urlencoded({extended: false}) ,(req, res, next) => {
    console.log(req);
    // perform actions on the collection object
    const post = {
