@@ -1,3 +1,4 @@
+//ES6 import syntax for mongostuff, please dont alter
 const mongo = import("mongodb");
 import { MongoClient, ServerApiVersion } from 'mongodb';
 const uri = "mongodb+srv://fitnesspro:Sammy123@fitnesspro-cluster.ylcv3h5.mongodb.net/?retryWrites=true&w=majority";

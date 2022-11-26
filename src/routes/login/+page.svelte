@@ -26,7 +26,7 @@
 			});
 			// console.log(JSON.stringify(user))
 			
-			
+			//sets field (firstname) blank
 			firstName = '';
 		} catch (err) {
 			alert(err);
