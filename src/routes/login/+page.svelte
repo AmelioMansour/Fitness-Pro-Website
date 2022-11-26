@@ -20,12 +20,13 @@
 			};
 			console.log('Called!');
 
-			await fetch('/login', {
+			await fetch('/api/adduser', {
 				method: 'POST',
 				body: JSON.stringify(user)
 			});
 			console.log(JSON.stringify(user));
-			console.log(fetch('/login'));
+			
+			//console.log(fetch('/login'.body))
 			firstName = '';
 		} catch (err) {
 			alert(err);
