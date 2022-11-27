@@ -5,14 +5,20 @@
     let newItem = '';
 	//Populate with previous goals or achievements
 	export let todoList = []
-    export let enterNew = ""
+    export let enterNew = ''
 
-	function addToList() {
-		todoList = [...todoList, newItem];
+	async function addToList() {
+		todoList =  [...todoList,newItem];
+		const list = {newItem};
 		newItem = '';
+
+		await fetch('/api/addgoal', {
+				method: 'POST',
+				body: JSON.stringify(list)
+			});
 		
 	}
-	
+
 	function removeFromList(index) {
 		todoList.splice(index, 1)
 		todoList = todoList;
