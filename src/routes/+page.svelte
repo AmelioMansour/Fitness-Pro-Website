@@ -1,11 +1,14 @@
 <script>
 	import { text } from 'svelte/internal';
 	import Nav from './nav.svelte';
+
 	export let username = '';
 
+	let UserID = '';
 	let password = '';
 	let firstName = ''; //use on main page as name.
 	let lastName = '';
+
 	function login() {
 		//IF VERIFY LOGIN
 	}
@@ -21,11 +24,11 @@
 			await fetch('/api/loginuser', {
 				method: 'POST',
 				body: JSON.stringify(user)
-			});
-
-			// console.log(JSON.stringify(user))
-
-			//sets field (firstname) blank
+			})
+				.then((Response) => Response.text())
+				.then(console.log)
+			
+			
 			firstName = '';
 		} catch (err) {
 			alert(err);
@@ -36,8 +39,7 @@
 
 <Nav active="login" />
 
-
-<div class="container text-center">
+<div id="Loginsection" class="container text-center">
 	<!-- <form action="createaccount" method="post"> -->
 	<!-- Login on form submission. -->
 	<!-- Either have login make a new account if username and password not same
