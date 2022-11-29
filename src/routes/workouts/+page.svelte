@@ -2,15 +2,12 @@
     import Nav from '../nav.svelte';
     import { each } from "svelte/internal";
 
-
     let newWorkout = '';
     let newDuration = '';
     let newReps = '';
     let newTotalArray = '';
     let finalText = '';
 
-
-    //Populate with previous goals or achievements
     export let workoutList = []
     export let enterNewWorkout = ''
     export let durationList = []
@@ -18,7 +15,6 @@
     export let repsList = []
     export let enterNewReps = ''
     export let totalArrayList = []
-    //export let enterNewC = ''
 
     let workoutStr = 'Workout: '
     let durationStr = 'Duration: '
@@ -46,23 +42,11 @@
 
         // await fetch('/api/addgoal', {
         //     method: 'POST',
-        //     body: JSON.stringify(list)
+        //     body: JSON.stringify(listA)
+
         // });
-
-        //todoListB =  [...todoListB,newItemB];
-        //const listB = {newItemB};
-        //newItemB = '';
-
-        await fetch('/api/addgoal', {
-            method: 'POST',
-            body: JSON.stringify(listA)
-
-        });
     
 }
-
-    //Populate with previous goals or achievements
-
 
 async function removeFromList(index) {
     todoList.splice(index, 1)
@@ -71,7 +55,9 @@ async function removeFromList(index) {
 }
 </script>
 
+
 <Nav active="workouts" />
+
 
 <div class="container text-center py-3">
 	<div class="entry-field pb-3">
@@ -84,18 +70,11 @@ async function removeFromList(index) {
 		</form>
 	</div>
 
-<!-- {#each todoListA as itemA, index}
-<p class="text-center listItemA">{itemA}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
-{/each}
-
-{#each todoListB as itemB, index}
-<p class="text-center listItemB">{itemB}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
-{/each} -->
-
 {#each finalText as itemC, index}
 <p class="text-center listItemC">{itemC}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
 {/each}
 </div>
+
 
 <style>
     #inputField{
@@ -127,5 +106,4 @@ async function removeFromList(index) {
 		font-size: 2rem;
 		color:#3F9FFE;
 	}
-
 </style>
