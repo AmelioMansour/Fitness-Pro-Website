@@ -5,6 +5,7 @@
 
     let newWorkout = '';
     let newDuration = '';
+    let newReps = '';
     let newTotalArray = '';
     let text = '';
 
@@ -14,7 +15,9 @@
     export let enterNewWorkout = ''
     export let durationList = []
     export let enterNewDuration = ''
-    export let todoListC = []
+    export let repsList = []
+    export let enterNewReps = ''
+    export let totalArrayList = []
     export let enterNewC = ''
     let workoutStr = 'Workout: '
 
@@ -24,14 +27,17 @@
     async function addToList() {
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
-        todoListC =  [...todoListC, workoutStr + newWorkout + newDuration];
-        text = (todoListC);
+        repsList =  [...repsList, newReps];
+        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + newDuration + newReps];
+        text = (totalArrayList);
 
         const listA = {newWorkout};
         newWorkout = '';
         const listB = {newDuration};
         newDuration = '';
-        const listC = {newWorkout, newDuration}
+        const listC = {newReps};
+        newReps = '';
+        const listD = {newWorkout, newDuration}
         newTotalArray = '';
 
         // await fetch('/api/addgoal', {
@@ -68,7 +74,7 @@ async function removeFromList(index) {
 		<form action="POST" onsubmit="return false">
 			<input id="inputField" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
-            <input id="inputField" bind:value={newTotalArray} type="text" placeholder="Enter amount of Reps {enterNewDuration}" class="rounded">
+            <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
 
 			<button on:click={addToList} id="addButton">Add</button>
 		</form>
