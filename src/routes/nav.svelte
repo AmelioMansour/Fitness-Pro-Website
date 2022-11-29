@@ -26,7 +26,8 @@
           <li><a id="workouts" class="nav-link mx-2 " href="/workouts" class:active-tab={active == "workouts"}>Workouts</a></li>
           <li><a id="goals" class="nav-link mx-2" href="/goals" class:active-tab={active == "goals"}>Goals</a></li>
           <li><a id="achievments" class="nav-link mx-2" href="/achievements" class:active-tab={active == "achievements"}>Achievements</a></li>
-          <li><a id="login" class="nav-link mx-2" href="/login" class:active-tab={active == "login"}>Login</a></li>
+          <li><a id="register" class="nav-link mx-2" href="/register" class:active-tab={active == "register"}>Register</a></li>
+          <li><a id="home" class="nav-link mx-2" href="/" class:active-tab={active == "Login"}>Login</a></li>
           <!-- <li><a class="nav-link mx-2" href="home"><img src="./images/logo.png" alt="" width="200"></a></li> -->
         </ul>
       </div>

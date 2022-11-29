@@ -35,7 +35,7 @@
 	}
 </script>
 
-<Nav active="login" />
+<Nav active="register" />
 
 <div class="container text-center">
 	<!-- <form action="createaccount" method="post"> -->
