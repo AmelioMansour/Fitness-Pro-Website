@@ -10,14 +10,16 @@ import { request } from 'express';
 
 export async function POST({ request }) {
     const body = await request.json();
-
-
-
-    const collection = client.db('FitnessPro').collection('Users');
-    
     console.log(body);
+    console.log(body.username);
+    const collection = client.db('FitnessPro').collection('Users');
 
-   
+
+    const result =  await collection.find({}).toArray();
+    
+    console.log(result);
+    
+
 
     return new Response()
 

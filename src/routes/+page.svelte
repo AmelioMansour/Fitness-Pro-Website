@@ -70,9 +70,9 @@ the account isnt already registered -->
 </div>
 
 <style>
-	#workouts, #goals, #achievments,#home  {
+	/* #workouts, #goals, #achievments,#home  {
 		display: none;
-	}
+	} */
 	h1 {
 		color: black;
 		font-size: 1.5rem;
