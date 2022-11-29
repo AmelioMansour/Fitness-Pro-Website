@@ -103,13 +103,38 @@ async function removeFromList(index) {
 		color:transparent;
 		transition: .2s;
 	}
-	#addButton{
+	/* #addButton{
 		margin-top: 20px;
 		border-radius: 10px;
 		color: #0080ff;
+        background-color: #1878d8;
 		border: 5px solid #0080ff;
 		width: 15%;
-	}
+	} */
+    
+    #addButton {
+        display: inline-block;
+         padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #3F9FFE;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 9px #999;
+    }
+
+    #addButton:hover {background-color: #1b2bbd}
+
+    #addButton:active {
+        background-color: #3F9FFE;
+        box-shadow: 0 5px #666;
+        transform: translateY(8px);
+    }
+
 	#removeItem{
 		margin-top: 1px;
 		border-radius: 10px;
