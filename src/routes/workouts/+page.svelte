@@ -7,7 +7,7 @@
     let newDuration = '';
     let newReps = '';
     let newTotalArray = '';
-    let text = '';
+    let finalText = '';
 
 
     //Populate with previous goals or achievements
@@ -33,15 +33,15 @@
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         totalArrayList =  [...totalArrayList, workoutStr + newWorkout + spaceStr+ durationStr + newDuration + spaceStr + repsStr + newReps];
-        text = (totalArrayList);
+        finalText = (totalArrayList);
 
-        const listA = {newWorkout};
+        const listForWorkout = {newWorkout};
         newWorkout = '';
-        const listB = {newDuration};
+        const listForDuration = {newDuration};
         newDuration = '';
-        const listC = {newReps};
+        const listForReps = {newReps};
         newReps = '';
-        const listD = {newWorkout, newDuration}
+        const listForFinal = {newWorkout, newDuration, newReps}
         newTotalArray = '';
 
         // await fetch('/api/addgoal', {
@@ -92,7 +92,7 @@ async function removeFromList(index) {
 <p class="text-center listItemB">{itemB}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
 {/each} -->
 
-{#each text as itemC, index}
+{#each finalText as itemC, index}
 <p class="text-center listItemC">{itemC}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
 {/each}
 </div>
