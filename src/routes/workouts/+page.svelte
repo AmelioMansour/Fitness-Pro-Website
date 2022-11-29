@@ -84,12 +84,12 @@ async function removeFromList(index) {
 
 
 <style>
-    h1 {
+    /* h1 {
         padding-top: 50px;
         padding-right: 30px;
         padding-bottom: 50px;
         padding-left: 80px;
-    }
+    } */
     #inputField{
         float: bottom;
 		width: 30%;
