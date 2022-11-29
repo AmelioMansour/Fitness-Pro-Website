@@ -55,8 +55,8 @@
 }
 
 async function removeFromList(index) {
-    todoList.splice(index, 1)
-    todoList = todoList;
+    finalText.splice(index, 1)
+    finalText = finalText;
 
 }
 </script>
