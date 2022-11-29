@@ -15,6 +15,7 @@
 	}
 
 	async function LoginUser() {
+		console.log(UserID);
 		try {
 			const user = {
 				username,
@@ -36,30 +37,19 @@
 			alert(err);
 			//text = '';
 		}
-		if (UserID != '') {
+		if (UserID == '') {
 			//reference node
-			var referenceNode = document.querySelector('#place');
-			//creates greeting
-			var greeting = document.createElement('h1');
-			greeting.setAttribute('id', 'greeting');
-			greeting.setAttribute('textContent', 'Hello, user: ' + username + '!');
-			console.log(greeting);
-			referenceNode.parentNode.insertBefore(greeting, referenceNode);
+			// var HeaderElem = document.querySelector('#greeting');
+			// HeaderElem.setAttribute(displ)
 		}
 	}
 </script>
 
 <Nav active="login" />
 {#if UserID != null || UserID != ''}
-	<h1 class="text-center">Welcome, {username}!</h1>
+	<h1 id="greeting" class="text-center" d>Welcome, {username}!</h1>
 {/if}
 <div id="Loginsection" class="container text-center">
-	<!-- <form action="createaccount" method="post"> -->
-	<!-- Login on form submission. -->
-	<!-- Either have login make a new account if username and password not same
-    or have a seperate register page, or ask them if they want to make a new account because
-the account isnt already registered -->
-
 	<h1 id="usernameLabel">Username</h1>
 	<input
 		type="text"
@@ -84,9 +74,7 @@ the account isnt already registered -->
 	<p>{username}</p>
 	<p>{password}</p>
 </div>
-<div>
-	<h2 id="place">hi</h2>
-</div>
+<div />
 
 <style>
 	/* #workouts, #goals, #achievments,#home  {
