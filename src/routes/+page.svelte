@@ -1,4 +1,5 @@
 <script>
+	import { name } from 'body-parser';
 	import { text } from 'svelte/internal';
 	import Nav from './nav.svelte';
 
@@ -26,19 +27,32 @@
 				body: JSON.stringify(user)
 			})
 				.then((Response) => Response.text())
-				.then(console.log)
-			
-			
-			firstName = '';
+				.then((data) => {
+					UserID = data;
+				});
+
+			console.log(UserID);
 		} catch (err) {
 			alert(err);
 			//text = '';
+		}
+		if (UserID != '') {
+			//reference node
+			var referenceNode = document.querySelector('#place');
+			//creates greeting
+			var greeting = document.createElement('h1');
+			greeting.setAttribute('id', 'greeting');
+			greeting.setAttribute('textContent', 'Hello, user: ' + username + '!');
+			console.log(greeting);
+			referenceNode.parentNode.insertBefore(greeting, referenceNode);
 		}
 	}
 </script>
 
 <Nav active="login" />
-
+{#if UserID != null || UserID != ''}
+	<h1 class="text-center">Welcome, {username}!</h1>
+{/if}
 <div id="Loginsection" class="container text-center">
 	<!-- <form action="createaccount" method="post"> -->
 	<!-- Login on form submission. -->
@@ -66,14 +80,22 @@ the account isnt already registered -->
 	<!-- <input type="Submit" value="Submit"/> -->
 	<button on:click={LoginUser} class="my-4" id="submitLogin"> Submit </button>
 	<!-- </form> -->
-
+	<p>{UserID}</p>
 	<p>{username}</p>
 	<p>{password}</p>
+</div>
+<div>
+	<h2 id="place">hi</h2>
 </div>
 
 <style>
 	/* #workouts, #goals, #achievments,#home  {
 		display: none;
+	} */
+	/* nav=["nav.svelte"]{
+		nav.label{
+			display: none;
+		}
 	} */
 	h1 {
 		color: black;
