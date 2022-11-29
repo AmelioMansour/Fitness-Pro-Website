@@ -8,21 +8,38 @@ import { request } from 'express';
 
 
 
-export async function POST({ request }) {
+export async function POST({ request, response }) {
     const body = await request.json();
-    console.log(body);
-    console.log(body.username);
+
     const collection = client.db('FitnessPro').collection('Users');
 
 
-    const result =  await collection.find({}).toArray();
+    const result = await collection.find({}).toArray();
+
+    let UserID = ''
+    result.forEach(allusers => {
+        if (body.username == allusers.username) {
+            console.log('Username Found')
+
+            if (body.password == allusers.password) {
+                UserID = allusers._id.toString();
+                console.log("Username found and CorrectPass!")
+                //INSERT H1 HERE
+                //document.getElementById("Loginsection").style.display="hidden";
+                   
+            }
+            else {
+                console.log("UserFound, but wrong password");
+            }
+
+        }
+        else {
+            console.log('wrong');
+        }
+
+    })
+    console.log(UserID);
     
-    console.log(result);
     
-
-
-    return new Response()
-
-
-
+    return new Response(UserID)
 }
