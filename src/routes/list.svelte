@@ -19,10 +19,23 @@
 		
 	}
 
-	function removeFromList(index) {
+	async function removeFromList(index) {
 		todoList.splice(index, 1)
 		todoList = todoList;
+
     }
+    
+	async function compGoals(item) {
+		const delitem = {item}
+		await fetch('/api/addach', {
+				method: 'POST',
+				body: JSON.stringify(delitem)
+			});
+
+
+	}
+
+
 </script>
 
 <div class="container text-center py-3">
@@ -34,7 +47,7 @@
 	</div>
 
 {#each todoList as item, index}
-<p class="text-center listItem">{item}<span><button id="removeItem" on:click={() => removeFromList(index)}> <img src="/images/X.png" alt="Remove Item" width="30"> </button></span></p>
+<p class="text-center listItem">{item}<span><button id="removeItem" on:click={() => {removeFromList(index), compGoals(item)}}> <img src="/images/X.png" alt="Remove Item" width="30"> </button></span></p>
 
 {/each}
 </div>

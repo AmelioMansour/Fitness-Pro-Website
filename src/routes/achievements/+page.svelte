@@ -4,4 +4,4 @@
 </script>
 
 <Nav active="achievements"/>
-<List enterNew = "Achievement"></List>
+<List item = "Achievement"></List>
