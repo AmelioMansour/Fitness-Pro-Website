@@ -1,26 +1,121 @@
 <script>
+    import Nav from '../nav.svelte';
+    import { each } from "svelte/internal";
 
-	import Nav from "../nav.svelte";
-	let title = "active"
+
+    let newWorkout = '';
+    let newDuration = '';
+    let newTotalArray = '';
+    let text = '';
+
+
+    //Populate with previous goals or achievements
+    export let workoutList = []
+    export let enterNewWorkout = ''
+    export let durationList = []
+    export let enterNewDuration = ''
+    export let todoListC = []
+    export let enterNewC = ''
+    let workoutStr = 'Workout: '
+
+
+
+
+    async function addToList() {
+        workoutList =  [...workoutList, newWorkout];
+        durationList =  [...durationList, newDuration];
+        todoListC =  [...todoListC, workoutStr + newWorkout + newDuration];
+        text = (todoListC);
+
+        const listA = {newWorkout};
+        newWorkout = '';
+        const listB = {newDuration};
+        newDuration = '';
+        const listC = {newWorkout, newDuration}
+        newTotalArray = '';
+
+        // await fetch('/api/addgoal', {
+        //     method: 'POST',
+        //     body: JSON.stringify(list)
+        // });
+
+        //todoListB =  [...todoListB,newItemB];
+        //const listB = {newItemB};
+        //newItemB = '';
+
+        await fetch('/api/addgoal', {
+            method: 'POST',
+            body: JSON.stringify(listA)
+
+        });
+    
+}
+
+    //Populate with previous goals or achievements
+
+
+async function removeFromList(index) {
+    todoList.splice(index, 1)
+    todoList = todoList;
+
+}
 </script>
-<svelte.head>
-	<title>{title}</title>
-</svelte.head>
 
+<Nav active="workouts" />
 
+<div class="container text-center py-3">
+	<div class="entry-field pb-3">
+		<form action="POST" onsubmit="return false">
+			<input id="inputField" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
+            <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
+            <input id="inputField" bind:value={newTotalArray} type="text" placeholder="Enter amount of Reps {enterNewDuration}" class="rounded">
 
+			<button on:click={addToList} id="addButton">Add</button>
+		</form>
+	</div>
 
-<Nav active="workouts"/>
-<div class="container-sm text-center">
-    <button class="btn btn-dark" id="newSession">Add New</button>
-  </div>
+<!-- {#each todoListA as itemA, index}
+<p class="text-center listItemA">{itemA}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
+{/each}
 
+{#each todoListB as itemB, index}
+<p class="text-center listItemB">{itemB}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
+{/each} -->
+
+{#each text as itemC, index}
+<p class="text-center listItemC">{itemC}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
+{/each}
+</div>
 
 <style>
-    #newSession{
-        width: 30%;
-        height: 6vh;
-        background-color: #3F9FFE;
-        border-color: #0080FF;
-    }
+    #inputField{
+		width: 33%;
+		height: 8vh;
+		border: 2px solid #3F9FFE;
+		border-color: #3F9FFE;
+	}
+	#inputField:focus{
+		outline: 2px solid #3F9FFE;
+	}
+	#inputField:focus::placeholder{
+		color:transparent;
+		transition: .2s;
+	}
+	button, button:active, button:focus {
+		outline: 2px;
+		border: none;
+	}
+	@media only screen and (max-width: 900px){
+		#inputField{
+			width: 70%;
+		}
+		#addButton{
+			width: 20%;
+		}
+	}
+	.listItemC{
+		font-size: 2rem;
+		color:#3F9FFE;
+	}
+
 </style>
