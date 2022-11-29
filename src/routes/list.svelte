@@ -47,7 +47,7 @@
 	</div>
 
 {#each todoList as item, index}
-<p class="text-center listItem">{item}<span><button id="removeItem" on:click={() => {removeFromList(index), compGoals(item)}}> <img src="/images/X.png" alt="Remove Item" width="30"> </button></span></p>
+<p class="text-center listItem">{item}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index), compGoals(item)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
 
 {/each}
 </div>
