@@ -18,8 +18,12 @@
     export let repsList = []
     export let enterNewReps = ''
     export let totalArrayList = []
-    export let enterNewC = ''
+    //export let enterNewC = ''
+
     let workoutStr = 'Workout: '
+    let durationStr = 'Duration: '
+    let repsStr = 'Reps: '
+    let spaceStr = ' '
 
 
 
@@ -28,7 +32,7 @@
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
-        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + newDuration + newReps];
+        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + durationStr + newDuration + repsStr + newReps];
         text = (totalArrayList);
 
         const listA = {newWorkout};
