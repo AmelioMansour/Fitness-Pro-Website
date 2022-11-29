@@ -16,18 +16,24 @@
     export let enterNewReps = ''
     export let totalArrayList = []
 
+    //export let finalArray = []
+    //let newFinalText = '';
+
     let workoutStr = 'Workout: '
     let durationStr = 'Duration: '
     let repsStr = 'Reps: '
+
     let spaceStr = '\xa0'
-    let newLineStr = '\r\n'
+    let minsWordStr = 'Minutes'
+    let repsWordStr = 'Reps'
 
     async function addToList() {
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
-        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + '\r\n' + durationStr + newDuration + newLineStr + repsStr + newReps];
+        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr)];
         finalText = (totalArrayList);
+        //finalArray = [...finalText, newFinalText]
 
         const listForWorkout = {newWorkout};
         newWorkout = '';
@@ -37,6 +43,8 @@
         newReps = '';
         const listForFinal = {newWorkout, newDuration, newReps}
         newTotalArray = '';
+        const listForNewFinalText = {newFinalText};
+        //newFinalText = '';
 
         // await fetch('/api/addgoal', {
         //     method: 'POST',
@@ -57,7 +65,7 @@ async function removeFromList(index) {
 <Nav active="workouts" />
 
 
-<div class="container text-center py-10">
+<div class="container text-center py-1000000">
 	<div class="entry-field pb-3">
 		<form action="POST" onsubmit="return false">
 			<input id="inputFieldMain" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
@@ -69,13 +77,19 @@ async function removeFromList(index) {
 		</form>
 	</div>
 
-{#each finalText as allItems, index}
-<p class="text-center listItemC">{allItems}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="10" height="10"> </button> </span></p>
-{/each}
+    {#each (finalText) as allItems, index}
+            <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
+    {/each}
 </div>
 
 
 <style>
+    h1 {
+        padding-top: 50px;
+        padding-right: 30px;
+        padding-bottom: 50px;
+        padding-left: 80px;
+    }
     #inputField{
         float: bottom;
 		width: 30%;
@@ -143,8 +157,10 @@ async function removeFromList(index) {
 			width: 20%;
 		}
 	}
-	.listItemC{
-		font-size: 2rem;
-		color:#3F9FFE;
+	.allItems{
+		font-size: 20px;
+		color:#fe6c3f;
+        display: block;
+        min-height: auto;
 	}
 </style>
