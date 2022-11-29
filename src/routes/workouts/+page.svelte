@@ -20,13 +20,13 @@
     let durationStr = 'Duration: '
     let repsStr = 'Reps: '
     let spaceStr = '\xa0'
-    let newLineStr = '\n'
+    let newLineStr = '\r\n'
 
     async function addToList() {
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
-        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + newLineStr+ durationStr + newDuration + newLineStr + repsStr + newReps];
+        totalArrayList =  [...totalArrayList, workoutStr + newWorkout + '\r\n' + durationStr + newDuration + newLineStr + repsStr + newReps];
         finalText = (totalArrayList);
 
         const listForWorkout = {newWorkout};
@@ -70,7 +70,7 @@ async function removeFromList(index) {
 	</div>
 
 {#each finalText as allItems, index}
-<p class="text-center listItemC">{allItems}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="15"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="15"> </button> </span></p>
+<p class="text-center listItemC">{allItems}<span><button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button> <button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/check-removebg-preview.png" alt="Move Item" width="10" height="10"> </button> </span></p>
 {/each}
 </div>
 
@@ -103,18 +103,10 @@ async function removeFromList(index) {
 		color:transparent;
 		transition: .2s;
 	}
-	/* #addButton{
-		margin-top: 20px;
-		border-radius: 10px;
-		color: #0080ff;
-        background-color: #1878d8;
-		border: 5px solid #0080ff;
-		width: 15%;
-	} */
     
     #addButton {
         display: inline-block;
-         padding: 10px 20px;
+        padding: 10px 20px;
         font-size: 20px;
         cursor: pointer;
         text-align: center;
@@ -140,7 +132,8 @@ async function removeFromList(index) {
 		border-radius: 10px;
 		color: #0080ff;
 		border: 4px solid #0080ff;
-		width: 4%;
+		width: 3%;
+        height: 1%;
 	}
 	@media only screen and (max-width: 900px){
 		#inputField{
