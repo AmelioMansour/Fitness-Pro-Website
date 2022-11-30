@@ -17,12 +17,12 @@
     export let repsList = []
     export let enterNewReps = ''
     export let intensityList = []
-    export let enterNewIntensity = ''
+    //export let enterNewIntensity = ''
     export let totalArrayList = []
 
     let newIntensityType = '';
     export let intensityTypeList = []
-    export let enterNewIntensityType = ''
+    //export let enterNewIntensityType = ''
 
     //export let finalArray = []
     //let newFinalText = '';
@@ -157,12 +157,13 @@
 
 <div class="container text-center py-1000000">
     <div>
-        <input type = "text" bind:value={newIntensityType} placeholder="Intensity not Selected">
+        <input id = "textForIntensity" type = "text" bind:value={newIntensityType} placeholder="Intensity not Selected">
     </div>
 	<div class="entry-field pb-3">
         <div class = "sliderContainer">
             <label for = "myRange">Select Intensity</label>
             <input type="range" min="0" max="100" bind:value={newIntensity} on:click={() => intensitySlide()} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
+            <div id="mydiv" class="thin_border">Space</div>
             <p id="rangeValue">Move Slider to Select Intensity</p>
             <datalist id = "volsettings">
                 <option value="0" label="0%">
@@ -177,16 +178,15 @@
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
+
+            <div id="mydiv" class="thin_border">Space</div>
+
 			<button on:click={() => {clearStringsBefore(), addToList(), calorieTracker(), addWorkouts(), clearStringsAfter()}} id="addButton">Add</button>
 		</form>
 
-        <input type = "text" placeholder={LEAmount}>
-        <input type = "text" placeholder={LEABurned}>
-        <input type = "text" placeholder={MEAmount}>
-        <input type = "text" placeholder={MEABurned}>
-        <input type = "text" placeholder={VEAmount}>
-        <input type = "text" placeholder={VEABurned}>
-        <input type = "text" placeholder={caloriesBurnedTotal}>
+        <div id="mydiv" class="thin_border">Space</div>
+
+        <input id="textMain" type = "text" placeholder="Total Calories Burned: {caloriesBurnedTotal}">
 
 
 	</div>
@@ -273,4 +273,31 @@
         display: block;
         min-height: auto;
 	}
+
+    #textMain {
+        text-align: center;
+        position: relative;
+        padding: 10px 20px;
+        border: none !important;
+        border-color: transparent !important;
+        white-space: normal;
+    }
+
+    .thin_border {
+    border-left: 1px transparent rgba(0, 0, 0, 0.3);
+    }
+
+    #mydiv {
+        height: 100%;
+        color: transparent;
+    }
+
+    #textForIntensity {
+        text-align: center;
+        position: relative;
+        padding: 10px 20px;
+        border: none !important;
+        border-color: transparent !important;
+        white-space: normal;
+    }
 </style>
