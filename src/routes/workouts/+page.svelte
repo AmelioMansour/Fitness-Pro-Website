@@ -1,12 +1,14 @@
 <script>
     import Nav from '../nav.svelte';
-    import { each } from "svelte/internal";
+    import { each, select_option } from "svelte/internal";
 
     let newWorkout = '';
     let newDuration = '';
     let newReps = '';
     let newTotalArray = '';
     let finalText = '';
+
+    let enteredValue = '';
 
     export let workoutList = []
     export let enterNewWorkout = ''
@@ -44,8 +46,7 @@
         newReps = '';
         const listForFinal = {newWorkout, newDuration, newReps}
         newTotalArray = '';
-        const listForNewFinalText = {newFinalText};
-
+        const listForNewFinalText = {newFinalText}
     
 }
 
@@ -60,7 +61,8 @@ async function addWorkouts() {
 			const workoutsMain = {
 				newWorkout,
 				newDuration,
-				newReps
+				newReps,
+                enteredValue
 			};
 			console.log('Called!');
 
@@ -94,6 +96,17 @@ async function addWorkouts() {
     {#each (finalText) as allItems, index}
             <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
     {/each}
+
+    <div class = "sliderContainer">
+        <label for = "myRange">Select Intensity</label>
+        <input type="range" min="0" max="100" bind:value={enteredValue} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
+        <p id="rangeValue"></p>
+        <datalist id = "volsettings">
+            <option value="0" label="0%">
+            <option value="50" label="50%">
+            <option value="100" label="100%">
+        </datalist>
+    </div>
 </div>
 
 
@@ -104,6 +117,11 @@ async function addWorkouts() {
         padding-bottom: 50px;
         padding-left: 80px;
     } */
+
+    #sliderContainer input{
+        float: none;
+    }
+
     #inputField{
         float: bottom;
 		width: 30%;
