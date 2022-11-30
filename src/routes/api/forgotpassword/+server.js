@@ -13,28 +13,29 @@ export async function POST({ request, response }) {
 
     const collection = client.db('FitnessPro').collection('Users');
     const result = await collection.find({}).toArray();
-    let UserID = ''
+    let answer1 = ''
     result.forEach(allusers => {
         if (body.username == allusers.username) {
             console.log('Username Found')
-
-            if (body.password == allusers.password) {
-                UserID = allusers._id.toString();
-                console.log("Username found and CorrectPass!")
+            console.log(body.answer);
+            console.log(allusers.answer);
+            if (body.answer == allusers.answer) {
+                answer1 = allusers.password.toString();
+                console.log("Username found and correctanswer!")
                 //INSERT H1 HERE
                 //document.getElementById("Loginsection").style.display="hidden";
 
             }
             else {
-                console.log("UserFound, but wrong password");
+                console.log("UserFound, but wrong answer");
             }
 
         }
-        else {}
+        else { }
 
     })
-    console.log(UserID);
+    console.log(answer1);
 
 
-    return new Response(UserID)
+    return new Response(answer1)
 }
