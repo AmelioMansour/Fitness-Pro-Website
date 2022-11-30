@@ -36,8 +36,9 @@
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         intensityList = [...intensityList, newIntensity];
-        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n'+ (intensityStr + newIntensity + spaceStr)];
-        console.log(newWorkut);
+        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n' + (intensityStr + newIntensity + spaceStr)];
+        console.log(newWorkout);
+        console.log(intensityList);
         finalText = (totalArrayList);
         //finalArray = [...finalText, newFinalText]
 
@@ -85,9 +86,20 @@ async function addWorkouts() {
 
 <Nav active="workouts" />
 
-
 <div class="container text-center py-1000000">
+    
 	<div class="entry-field pb-3">
+        <div class = "sliderContainer">
+            <label for = "myRange">Select Intensity</label>
+            <input type="range" min="0" max="100" bind:value={newIntensity} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
+            <p id="rangeValue"></p>
+            <!-- <datalist id = "volsettings">
+                <option value="0" label="0%">
+                <option value="50" label="50%">
+                <option value="100" label="100%">
+            </datalist> -->
+            <p id="rangedLabel"></p>
+        </div>
 		<form action="POST" onsubmit="return false">
 			<input id="inputFieldMain" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
         <br>
@@ -102,17 +114,6 @@ async function addWorkouts() {
             <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
     {/each}
 
-    <div class = "sliderContainer">
-        <label for = "myRange">Select Intensity</label>
-        <input type="range" min="0" max="100" bind:value={newIntensity} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
-        <p id="rangeValue"></p>
-        <!-- <datalist id = "volsettings">
-            <option value="0" label="0%">
-            <option value="50" label="50%">
-            <option value="100" label="100%">
-        </datalist> -->
-        <p id="rangedLabel"></p>
-    </div>
 </div>
 
 
