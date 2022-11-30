@@ -9,6 +9,8 @@
 	let password = '';
 	let firstName = ''; //use on main page as name.
 	let lastName = '';
+	let answer = '';
+	let answer1 = '';
 
 	function login() {
 		//IF VERIFY LOGIN
@@ -37,16 +39,43 @@
 			alert(err);
 			//text = '';
 		}
-		if (UserID == '') {
-			//reference node
-			// var HeaderElem = document.querySelector('#greeting');
-			// HeaderElem.setAttribute(displ)
+		if (UserID != '') {
+			console.log('goodjob');
+		}
+	}
+
+	//Forgot Password function
+	async function Forgotpassword() {
+		
+		try {
+			const user = {
+				username,
+				answer
+			};
+			console.log('Called!');
+
+			await fetch('/api/forgotpassword', {
+				method: 'POST',
+				body: JSON.stringify(user)
+			})
+				.then((Response) => Response.text())
+				.then((data) => {
+					answer1 = data;
+				});
+
+			console.log(UserID);
+		} catch (err) {
+			alert(err);
+			//text = '';
+		}
+		if (answer1 != '') {
+			console.log('answer correct goodjob');
 		}
 	}
 </script>
 
-<Nav active="login" />
-{#if UserID != null || UserID != ''}
+<Nav active="Login" />
+{#if UserID != ''}
 	<h1 id="greeting" class="text-center" d>Welcome, {username}!</h1>
 {/if}
 <div id="Loginsection" class="container text-center">
@@ -68,13 +97,38 @@
 	/>
 	<br />
 	<!-- <input type="Submit" value="Submit"/> -->
-	<button on:click={LoginUser} class="my-4" id="submitLogin"> Submit </button>
-	<!-- </form> -->
-	<p>{UserID}</p>
-	<p>{username}</p>
-	<p>{password}</p>
+	<button on:click={LoginUser} class="my-4" id="submitLogin"> Login </button>
+	<br />
+	<br />
+	<br />
+	<h1>Forgot your password?</h1>
+	<p>
+		If you forgot your password enter your username in the field and the answer to the security
+		question below!
+	</p>
+	<input
+		type="text"
+		bind:value={username}
+		placeholder="Enter username"
+		id="usernameInput"
+		name="user"
+	/>
+	<br />
+	<h1 id="securitylabel">What is your mother's maiden name?</h1>
+	<input
+		type="text"
+		bind:value={answer}
+		placeholder="Enter answer"
+		id="answerinput"
+		name="answer"
+	/>
+	<br />
+	<button on:click={Forgotpassword} class="my-4" id="submitLogin"> ForgotPassword? </button>
+	{#if answer1 != ''}
+		<h1 id="greeting" class="text-center" d>{username}, your Password is, "{answer1}"!</h1>
+	{/if}
 </div>
-<div />
+
 
 <style>
 	/* #workouts, #goals, #achievments,#home  {

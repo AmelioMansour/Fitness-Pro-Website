@@ -6,6 +6,7 @@
 	let password = '';
 	let firstName = ''; //use on main page as name.
 	let lastName = '';
+	let answer= '';
 	function login() {
 		//IF VERIFY LOGIN
 	}
@@ -16,7 +17,8 @@
 				firstName,
 				lastName,
 				username,
-				password
+				password,
+				answer
 			};
 			console.log('Called!');
 
@@ -76,14 +78,25 @@ the account isnt already registered -->
 		name="pass"
 	/>
 	<br />
+	<br>
+	<br>
+	<h2>Security Question </h2>
+	<br>
+	<h1 id="securitylabel">What is your mother's maiden name?</h1>
+	<input
+		type="text"
+		bind:value={answer}
+		placeholder="Enter answer"
+		id="answerinput"
+		name="answer"
+	/>
+	
+	<br />
 	<!-- <input type="Submit" value="Submit"/> -->
 	<button on:click={addUser} class="my-4" id="submitLogin"> Submit </button>
 	<!-- </form> -->
 
-	<p>{firstName}</p>
-	<p>{lastName}</p>
-	<p>{username}</p>
-	<p>{password}</p>
+	
 </div>
 
 <style>
