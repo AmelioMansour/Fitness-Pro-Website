@@ -32,6 +32,7 @@
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr)];
+        console.log(newWorkut);
         finalText = (totalArrayList);
         //finalArray = [...finalText, newFinalText]
 
@@ -44,13 +45,7 @@
         const listForFinal = {newWorkout, newDuration, newReps}
         newTotalArray = '';
         const listForNewFinalText = {newFinalText};
-        //newFinalText = '';
 
-        // await fetch('/api/addgoal', {
-        //     method: 'POST',
-        //     body: JSON.stringify(listA)
-
-        // });
     
 }
 
@@ -59,6 +54,25 @@ async function removeFromList(index) {
     finalText = finalText;
 
 }
+
+async function addWorkouts() {
+		try {
+			const workoutsMain = {
+				newWorkout,
+				newDuration,
+				newReps
+			};
+			console.log('Called!');
+
+			await fetch('/api/addworkouts', {
+				method: 'POST',
+				body: JSON.stringify(workoutsMain)
+			});
+
+		} catch (err) {
+			alert(err);
+		}
+	}
 </script>
 
 
@@ -73,7 +87,7 @@ async function removeFromList(index) {
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
-			<button on:click={addToList} id="addButton">Add</button>
+			<button on:click={() => {addToList(), addWorkouts()}} id="addButton">Add</button>
 		</form>
 	</div>
 
