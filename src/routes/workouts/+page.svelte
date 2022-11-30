@@ -7,6 +7,7 @@
     let newReps = '';
     let newIntensity = '';
     let newTotalArray = '';
+    let intensityType = '';
     let finalText = '';
 
     export let workoutList = []
@@ -56,6 +57,16 @@
     
 }
 
+    async function intensitySlide(){
+        if (newIntensity == 0) {
+            intensityType = "Low"
+        } if (newIntensity == 50) {
+            intensityType = "Moderate"
+        } if (newIntensity > 50) {
+            intensityType = "Vigerous"
+        }
+}
+
 async function removeFromList(index) {
     finalText.splice(index, 1)
     finalText = finalText;
@@ -87,18 +98,20 @@ async function addWorkouts() {
 <Nav active="workouts" />
 
 <div class="container text-center py-1000000">
-    
+    <div>
+        <input type = "text" bind:value={intensityType}>
+    </div>
 	<div class="entry-field pb-3">
         <div class = "sliderContainer">
             <label for = "myRange">Select Intensity</label>
-            <input type="range" min="0" max="100" bind:value={newIntensity} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
-            <p id="rangeValue"></p>
-            <!-- <datalist id = "volsettings">
+            <input type="range" min="0" max="100" bind:value={newIntensity} on:click={() => intensitySlide()} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
+            <p id="rangeValue">Move Slider to Select Intensity</p>
+            <datalist id = "volsettings">
                 <option value="0" label="0%">
                 <option value="50" label="50%">
                 <option value="100" label="100%">
-            </datalist> -->
-            <p id="rangedLabel"></p>
+            </datalist>
+
         </div>
 		<form action="POST" onsubmit="return false">
 			<input id="inputFieldMain" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
