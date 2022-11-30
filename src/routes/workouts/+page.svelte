@@ -95,17 +95,18 @@
         //VEABurned = (VEAmount) * Number(newDuration)
 
         if (newIntensity == 0) {
-            LEABurned = (LEAmount) * Number(newDuration)
+            LEABurned = (LEAmount) * newDuration
             caloriesText = LEABurned
         } if (newIntensity == 50) {
-            MEABurned = (MEAmount) * Number(newDuration)
+            MEABurned = (MEAmount) * newDuration
             caloriesText = MEABurned
         } if (newIntensity == 100) {
-            VEABurned = (VEAmount) * Number(newDuration)
+            VEABurned = (VEAmount) * newDuration
             caloriesText = VEABurned
         }
 
-        caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
+        //caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
+        caloriesBurnedHolding = (caloriesText)
         caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
     }
 
@@ -115,8 +116,9 @@
 				newWorkout,
 				newDuration,
 				newReps,
-                newIntensity,
-                newIntensityType
+                newIntensityType,
+                caloriesBurnedHolding,
+                caloriesBurnedTotal
 			};
 			console.log('Called!');
 
@@ -140,14 +142,14 @@
     </div>
 	<div class="entry-field pb-3">
         <div class = "sliderContainer">
-            <label for = "myRange">Select Intensity</label>
-            <input type="range" min="0" max="100" bind:value={newIntensity} on:click={() => intensitySlide()} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
-            <div id="mydiv" class="thin_border">Space</div>
-            <p id="rangeValue">Move Slider to Select Intensity</p>
-            <datalist id = "volsettings">
-                <option value="0" label="0%">
-                <option value="50" label="50%">
-                <option value="100" label="100%">
+            <!-- <label for = "myRange">Select Intensity</label> -->
+            <input type="range" min="0" max="100" bind:value={newIntensity} on:click={() => intensitySlide()} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="sliderSettings">
+            <div id="myOwnDiv" class="thinBorder">Space</div>
+            <p>Move Slider to Select Intensity</p>
+            <datalist id = "sliderSettings">
+                <option value="0">
+                <option value="50">
+                <option value="100">
             </datalist>
 
         </div>
@@ -158,16 +160,16 @@
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
 
-            <div id="mydiv" class="thin_border">Space</div>
+            <div id="myOwnDiv" class="thinBorder">Space</div>
 
             <button on:click={() => {clearCalories()}} id="clearButton">Clear Total Calories</button>
 
-            <div id="mydiv" class="thin_border">Space</div>
+            <div id="myOwnDiv" class="thinBorder">Space</div>
 
-			<button on:click={() => {clearStringsBefore(), addToList(), addWorkouts(), calorieTracker(), clearStringsAfter()}} id="addButton">Add</button>
+			<button on:click={() => {clearStringsBefore(), calorieTracker(), addToList(), addWorkouts(), clearStringsAfter()}} id="addButton">Add</button>
 		</form>
 
-        <div id="mydiv" class="thin_border">Space</div>
+        <div id="myOwnDiv" class="thinBorder">Space</div>
 
         <input id="textMain" type = "text" placeholder="Total Calories Burned: {caloriesBurnedTotal}">
 
@@ -283,6 +285,7 @@
 	}
 
     #textMain {
+        width: 100%;
         text-align: center;
         position: relative;
         padding: 10px 20px;
@@ -291,11 +294,11 @@
         white-space: normal;
     }
 
-    .thin_border {
+    .thinBorder {
     border-left: 1px transparent rgba(0, 0, 0, 0.3);
     }
 
-    #mydiv {
+    #myOwnDiv {
         height: 100%;
         color: transparent;
     }
