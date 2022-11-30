@@ -79,6 +79,10 @@
         const listForNewFinalText = {newFinalText}
     }
 
+    async function clearCalories() {
+        caloriesBurnedTotal = 0;
+    }
+
     async function clearStringsBefore() {
         LEABurned = 0;
         MEABurned = 0;
@@ -179,7 +183,7 @@
 
             <div id="mydiv" class="thin_border">Space</div>
 
-            <button on:click={() => {clearStringsBefore()}} id="clearButton">Clear Total Calories</button>
+            <button on:click={() => {clearCalories()}} id="clearButton">Clear Total Calories</button>
 
             <div id="mydiv" class="thin_border">Space</div>
 
