@@ -112,8 +112,7 @@
             caloriesText = Math.floor(LEABurned)
         } if (newIntensity == 50) {
             MEABurned = (MEAmount) * Number(newDuration)
-        } if (newIntensity == 50.01) {
-            
+            caloriesText = Math.floor(MEABurned)
         } if (newIntensity == 100) {
             VEABurned = (VEAmount) * Number(newDuration)
             caloriesText = Math.floor(VEABurned)
