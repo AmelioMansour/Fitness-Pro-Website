@@ -8,6 +8,7 @@
     let newIntensity = '';
     let newTotalArray = '';
     let finalText = '';
+    let caloriesText = '';
 
     export let workoutList = []
     export let enterNewWorkout = ''
@@ -43,6 +44,8 @@
     var MEABurned = 0
     var VEABurned = 0
 
+    var caloriesBurnedTotal = 0
+
     async function addToList() {
 
         workoutList =  [...workoutList, newWorkout];
@@ -50,15 +53,16 @@
         repsList =  [...repsList, newReps];
         intensityList = [...intensityList, newIntensity];
         intensityTypeList = [...intensityTypeList, newIntensityType];
-        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n' + (intensityStr + newIntensityType + spaceStr)];
+        totalArrayList =  [...totalArrayList, ('| ' + workoutStr + newWorkout + spaceStr +'|') +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr + '|')  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr + '|') +'\n' + (intensityStr + newIntensityType + spaceStr + '|') + '\n' + ('Calories Burned: ' + caloriesText + ' | ')];
         //console.log(newWorkout);
         //console.log(intensityList);
         finalText = (totalArrayList);
         //finalArray = [...finalText, newFinalText]
-    
+        
+
     }
 
-    async function clearStrings() {
+    async function clearStringsAfter() {
         const listForWorkout = {newWorkout};
         newWorkout = '';
         const listForDuration = {newDuration};
@@ -73,6 +77,12 @@
         const listForFinal = {newWorkout, newDuration, newReps, newIntensity}
         newTotalArray = '';
         const listForNewFinalText = {newFinalText}
+    }
+
+    async function clearStringsBefore() {
+        LEABurned = 0;
+        MEABurned = 0;
+        VEABurned = 0;
     }
 
     async function intensitySlide(){
@@ -94,15 +104,27 @@
         //low = 400/hr, LEAmount (Low Exercise Amount)
         //moderate = 500/hr, MEAmount (Moderate Exercise Amount)
         //vigerous = 700/hr, VEAmount (Vigerous Exercise Amount)
-        console.log("Hello");
+        //LEABurned = (LEAmount) * Number(newDuration)
+        //MEABurned = (MEAmount) * Number(newDuration)
+        //VEABurned = (VEAmount) * Number(newDuration)
 
-        LEABurned = (LEAmount) * Number(newDuration)
-        MEABurned = (MEAmount) * Number(newDuration)
-        VEABurned = (VEAmount) * Number(newDuration)
+        console.log("Hello");
+        if (newIntensity == 0) {
+            LEABurned = (LEAmount) * Number(newDuration)
+            caloriesText = Math.floor(LEABurned)
+        } if (newIntensity == 50) {
+            MEABurned = (MEAmount) * Number(newDuration)
+            caloriesText = Math.floor(MEABurned)
+        } if (newIntensity > 50) {
+            VEABurned = (VEAmount) * Number(newDuration)
+            caloriesText = Math.floor(VEABurned)
+        }
 
         const caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
 
-        const caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
+        caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
+
+        //caloriesText = 
 
         console.log(LEAmount);
         console.log(caloriesBurnedTotal);
@@ -155,7 +177,7 @@
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
-			<button on:click={() => {addToList(), calorieTracker(), addWorkouts(), clearStrings()}} id="addButton">Add</button>
+			<button on:click={() => {clearStringsBefore(), addToList(), calorieTracker(), addWorkouts(), clearStringsAfter()}} id="addButton">Add</button>
 		</form>
 
         <input type = "text" placeholder={LEAmount}>
@@ -164,6 +186,7 @@
         <input type = "text" placeholder={MEABurned}>
         <input type = "text" placeholder={VEAmount}>
         <input type = "text" placeholder={VEABurned}>
+        <input type = "text" placeholder={caloriesBurnedTotal}>
 
 
 	</div>
@@ -171,24 +194,10 @@
     {#each (finalText) as allItems, index}
             <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
     {/each}
-    {#each (finalText) as allItemsA, index}
-        <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
-    {/each}
-
 </div>
 
 
 <style>
-    /* h1 {
-        padding-top: 50px;
-        padding-right: 30px;
-        padding-bottom: 50px;
-        padding-left: 80px;
-    } */
-
-    #sliderContainer input{
-        float: none;
-    }
 
     #inputField{
         float: bottom;
@@ -258,8 +267,8 @@
 		}
 	}
 	.allItems{
-        right: 10px;
-		font-size: 20px;
+        text-align:right;
+		font-size: 15px;
 		color:#fe6c3f;
         display: block;
         min-height: auto;
