@@ -16,8 +16,6 @@ export async function POST({ request, response }) {
 
     const result = await collection.find({}).toArray();
 
-    console.log(result);
-
     let UserID = ''
     result.forEach(allusers => {
         if (body.username == allusers.username) {
@@ -28,7 +26,7 @@ export async function POST({ request, response }) {
                 console.log("Username found and CorrectPass!")
                 //INSERT H1 HERE
                 //document.getElementById("Loginsection").style.display="hidden";
-                   
+
             }
             else {
                 console.log("UserFound, but wrong password");
@@ -41,7 +39,7 @@ export async function POST({ request, response }) {
 
     })
     console.log(UserID);
-    
-    
+
+
     return new Response(UserID)
 }
