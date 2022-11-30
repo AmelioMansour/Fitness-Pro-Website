@@ -15,7 +15,7 @@ export async function POST({ request, response }) {
 
 
     const result = await collection.find({}).toArray();
-    
+
     let UserID = ''
     result.forEach(allusers => {
         if (body.username == allusers.username) {
