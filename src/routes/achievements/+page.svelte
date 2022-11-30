@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <!-- <script>
 	import { name } from 'body-parser';
 	import { text } from 'svelte/internal';
@@ -24,4 +22,3 @@
 </div>
 </div> -->
 
->>>>>>> Stashed changes
