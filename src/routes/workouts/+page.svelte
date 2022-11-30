@@ -7,7 +7,6 @@
     let newReps = '';
     let newIntensity = '';
     let newTotalArray = '';
-    let intensityType = '';
     let finalText = '';
 
     export let workoutList = []
@@ -19,6 +18,10 @@
     export let intensityList = []
     export let enterNewIntensity = ''
     export let totalArrayList = []
+
+    let newIntensityType = '';
+    export let intensityTypeList = []
+    export let enterNewIntensityType = ''
 
     //export let finalArray = []
     //let newFinalText = '';
@@ -37,7 +40,8 @@
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         intensityList = [...intensityList, newIntensity];
-        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n' + (intensityStr + newIntensity + spaceStr)];
+        intensityTypeList = [...intensityTypeList, newIntensityType];
+        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n' + (intensityStr + newIntensityType + spaceStr)];
         console.log(newWorkout);
         console.log(intensityList);
         finalText = (totalArrayList);
@@ -59,11 +63,11 @@
 
     async function intensitySlide(){
         if (newIntensity == 0) {
-            intensityType = "Low"
+            newIntensityType = "Low"
         } if (newIntensity == 50) {
-            intensityType = "Moderate"
+            newIntensityType = "Moderate"
         } if (newIntensity > 50) {
-            intensityType = "Vigerous"
+            newIntensityType = "Vigerous"
         }
 }
 
@@ -79,7 +83,8 @@ async function addWorkouts() {
 				newWorkout,
 				newDuration,
 				newReps,
-                newIntensity
+                newIntensity,
+                newIntensityType
 			};
 			console.log('Called!');
 
@@ -99,7 +104,7 @@ async function addWorkouts() {
 
 <div class="container text-center py-1000000">
     <div>
-        <input type = "text" bind:value={intensityType}>
+        <input type = "text" bind:value={newIntensityType} placeholder="Intensity not Selected">
     </div>
 	<div class="entry-field pb-3">
         <div class = "sliderContainer">
