@@ -8,7 +8,7 @@
     let newIntensity = '';
     let newTotalArray = '';
     let finalText = '';
-    let caloriesText = '';
+    var caloriesText = 0;
 
     export let workoutList = []
     export let enterNewWorkout = ''
@@ -33,12 +33,12 @@
     let intensityStr = 'Intensity: '
 
     let spaceStr = '\xa0'
-    let minsWordStr = 'Minutes'
+    let minsWordStr = 'Minute(s)'
     let repsWordStr = 'Reps'
 
-    const LEAmount = 6.7
-    const MEAmount = 8.4
-    const VEAmount = 11.7
+    const LEAmount = 7
+    const MEAmount = 8.5
+    const VEAmount = 12
 
     var LEABurned = 0
     var MEABurned = 0
@@ -115,7 +115,7 @@
         } if (newIntensity == 50) {
             MEABurned = (MEAmount) * Number(newDuration)
             caloriesText = Math.floor(MEABurned)
-        } if (newIntensity > 50) {
+        } if (newIntensity == 100) {
             VEABurned = (VEAmount) * Number(newDuration)
             caloriesText = Math.floor(VEABurned)
         }
@@ -123,8 +123,6 @@
         const caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
 
         caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
-
-        //caloriesText = 
 
         console.log(LEAmount);
         console.log(caloriesBurnedTotal);
@@ -178,6 +176,10 @@
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
+
+            <div id="mydiv" class="thin_border">Space</div>
+
+            <button on:click={() => {clearStringsBefore()}} id="clearButton">Clear Total Calories</button>
 
             <div id="mydiv" class="thin_border">Space</div>
 
@@ -249,6 +251,28 @@
         box-shadow: 0 5px #666;
         transform: translateY(8px);
     }
+    #clearButton {
+        display: inline-block;
+        padding: 4px 8px;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #fe853f;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 9px #999;
+    }
+
+    #clearButton:hover {background-color: #1b2bbd}
+
+    #clearButton:active {
+        background-color: #3F9FFE;
+        box-shadow: 0 5px #666;
+        transform: translateY(8px);
+    }
 
 	#removeItem{
 		margin-top: 1px;
@@ -263,6 +287,9 @@
 			width: 70%;
 		}
 		#addButton{
+			width: 20%;
+		}
+        #clearButton{
 			width: 20%;
 		}
 	}
