@@ -5,10 +5,9 @@
     let newWorkout = '';
     let newDuration = '';
     let newReps = '';
+    let newIntensity = '';
     let newTotalArray = '';
     let finalText = '';
-
-    let enteredValue = '';
 
     export let workoutList = []
     export let enterNewWorkout = ''
@@ -16,6 +15,8 @@
     export let enterNewDuration = ''
     export let repsList = []
     export let enterNewReps = ''
+    export let intensityList = []
+    export let enterNewIntensity = ''
     export let totalArrayList = []
 
     //export let finalArray = []
@@ -24,6 +25,7 @@
     let workoutStr = 'Workout: '
     let durationStr = 'Duration: '
     let repsStr = 'Reps: '
+    let intensityStr = 'Intensity: '
 
     let spaceStr = '\xa0'
     let minsWordStr = 'Minutes'
@@ -33,7 +35,8 @@
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
-        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr)];
+        intensityList = [...intensityList, newIntensity];
+        totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n'+ (intensityStr + newIntensity + spaceStr)];
         console.log(newWorkut);
         finalText = (totalArrayList);
         //finalArray = [...finalText, newFinalText]
@@ -44,7 +47,9 @@
         newDuration = '';
         const listForReps = {newReps};
         newReps = '';
-        const listForFinal = {newWorkout, newDuration, newReps}
+        const listForIntensity = {newIntensity};
+        newIntensity = '';
+        const listForFinal = {newWorkout, newDuration, newReps, newIntensity}
         newTotalArray = '';
         const listForNewFinalText = {newFinalText}
     
@@ -62,7 +67,7 @@ async function addWorkouts() {
 				newWorkout,
 				newDuration,
 				newReps,
-                enteredValue
+                newIntensity
 			};
 			console.log('Called!');
 
@@ -99,13 +104,14 @@ async function addWorkouts() {
 
     <div class = "sliderContainer">
         <label for = "myRange">Select Intensity</label>
-        <input type="range" min="0" max="100" bind:value={enteredValue} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
+        <input type="range" min="0" max="100" bind:value={newIntensity} class="slider" id="myRange" oninput="rangeValue.innerText = this.value" step = "50" list="volsettings">
         <p id="rangeValue"></p>
-        <datalist id = "volsettings">
+        <!-- <datalist id = "volsettings">
             <option value="0" label="0%">
             <option value="50" label="50%">
             <option value="100" label="100%">
-        </datalist>
+        </datalist> -->
+        <p id="rangedLabel"></p>
     </div>
 </div>
 
