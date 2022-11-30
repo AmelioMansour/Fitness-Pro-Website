@@ -44,6 +44,7 @@
     var MEABurned = 0
     var VEABurned = 0
 
+    var caloriesBurnedHolding = 0
     var caloriesBurnedTotal = 0
 
     async function addToList() {
@@ -63,20 +64,13 @@
     }
 
     async function clearStringsAfter() {
-        const listForWorkout = {newWorkout};
         newWorkout = '';
-        const listForDuration = {newDuration};
         newDuration = '';
-        const listForReps = {newReps};
         newReps = '';
-        const listForIntensity = {newIntensity};
         newIntensity = '';
-        const listForIntensityType = {newIntensityType};
         newIntensityType = '';
 
-        const listForFinal = {newWorkout, newDuration, newReps, newIntensity}
         newTotalArray = '';
-        const listForNewFinalText = {newFinalText}
     }
 
     async function clearCalories() {
@@ -118,13 +112,14 @@
             caloriesText = Math.floor(LEABurned)
         } if (newIntensity == 50) {
             MEABurned = (MEAmount) * Number(newDuration)
-            caloriesText = Math.floor(MEABurned)
+        } if (newIntensity == 50.01) {
+            
         } if (newIntensity == 100) {
             VEABurned = (VEAmount) * Number(newDuration)
             caloriesText = Math.floor(VEABurned)
         }
 
-        const caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
+        caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
 
         caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
 
@@ -177,7 +172,7 @@
 		<form action="POST" onsubmit="return false">
 			<input id="inputFieldMain" bind:value={newWorkout} type="text" placeholder="Enter a Workout {enterNewWorkout}" class="rounded">
         <br>
-            <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
+            <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration (in minutes){enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
 
@@ -187,7 +182,7 @@
 
             <div id="mydiv" class="thin_border">Space</div>
 
-			<button on:click={() => {clearStringsBefore(), addToList(), calorieTracker(), addWorkouts(), clearStringsAfter()}} id="addButton">Add</button>
+			<button on:click={() => {clearStringsBefore(), addToList(), addWorkouts(), calorieTracker(), clearStringsAfter()}} id="addButton">Add</button>
 		</form>
 
         <div id="mydiv" class="thin_border">Space</div>
