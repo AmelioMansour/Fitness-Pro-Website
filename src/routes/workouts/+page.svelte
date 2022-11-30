@@ -17,15 +17,10 @@
     export let repsList = []
     export let enterNewReps = ''
     export let intensityList = []
-    //export let enterNewIntensity = ''
     export let totalArrayList = []
 
     let newIntensityType = '';
     export let intensityTypeList = []
-    //export let enterNewIntensityType = ''
-
-    //export let finalArray = []
-    //let newFinalText = '';
 
     let workoutStr = 'Workout: '
     let durationStr = 'Duration: '
@@ -48,19 +43,13 @@
     var caloriesBurnedTotal = 0
 
     async function addToList() {
-
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         intensityList = [...intensityList, newIntensity];
         intensityTypeList = [...intensityTypeList, newIntensityType];
         totalArrayList =  [...totalArrayList, ('| ' + workoutStr + newWorkout + spaceStr +'|') +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr + '|')  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr + '|') +'\n' + (intensityStr + newIntensityType + spaceStr + '|') + '\n' + ('Calories Burned: ' + caloriesText + ' | ')];
-        //console.log(newWorkout);
-        //console.log(intensityList);
         finalText = (totalArrayList);
-        //finalArray = [...finalText, newFinalText]
-        
-
     }
 
     async function clearStringsAfter() {
@@ -69,7 +58,6 @@
         newReps = '';
         newIntensity = '';
         newIntensityType = '';
-
         newTotalArray = '';
     }
 
@@ -118,9 +106,7 @@
         }
 
         caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
-
         caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
-
     }
 
     async function addWorkouts() {
