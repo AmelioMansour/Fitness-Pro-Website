@@ -3,7 +3,7 @@
     import { each, select_option } from "svelte/internal";
 
     let newWorkout = '';
-    let newDuration = '';
+    var newDuration = '';
     let newReps = '';
     let newIntensity = '';
     let newTotalArray = '';
@@ -35,18 +35,30 @@
     let minsWordStr = 'Minutes'
     let repsWordStr = 'Reps'
 
+    const LEAmount = 6.7
+    const MEAmount = 8.4
+    const VEAmount = 11.7
+
+    var LEABurned = 0
+    var MEABurned = 0
+    var VEABurned = 0
+
     async function addToList() {
+
         workoutList =  [...workoutList, newWorkout];
         durationList =  [...durationList, newDuration];
         repsList =  [...repsList, newReps];
         intensityList = [...intensityList, newIntensity];
         intensityTypeList = [...intensityTypeList, newIntensityType];
         totalArrayList =  [...totalArrayList, (workoutStr + newWorkout + spaceStr) +'\n'+ (durationStr + newDuration + spaceStr + minsWordStr + spaceStr)  +'\n'+ (repsStr + newReps + spaceStr + repsWordStr + spaceStr) +'\n' + (intensityStr + newIntensityType + spaceStr)];
-        console.log(newWorkout);
-        console.log(intensityList);
+        //console.log(newWorkout);
+        //console.log(intensityList);
         finalText = (totalArrayList);
         //finalArray = [...finalText, newFinalText]
+    
+    }
 
+    async function clearStrings() {
         const listForWorkout = {newWorkout};
         newWorkout = '';
         const listForDuration = {newDuration};
@@ -55,11 +67,13 @@
         newReps = '';
         const listForIntensity = {newIntensity};
         newIntensity = '';
+        const listForIntensityType = {newIntensityType};
+        newIntensityType = '';
+
         const listForFinal = {newWorkout, newDuration, newReps, newIntensity}
         newTotalArray = '';
         const listForNewFinalText = {newFinalText}
-    
-}
+    }
 
     async function intensitySlide(){
         if (newIntensity == 0) {
@@ -69,15 +83,32 @@
         } if (newIntensity > 50) {
             newIntensityType = "Vigerous"
         }
-}
+    }
 
-async function removeFromList(index) {
-    finalText.splice(index, 1)
-    finalText = finalText;
+    async function removeFromList(index) {
+        finalText.splice(index, 1)
+        finalText = finalText;
+    }
 
-}
+    async function calorieTracker() {
+        //low = 400/hr, LEAmount (Low Exercise Amount)
+        //moderate = 500/hr, MEAmount (Moderate Exercise Amount)
+        //vigerous = 700/hr, VEAmount (Vigerous Exercise Amount)
+        console.log("Hello");
 
-async function addWorkouts() {
+        LEABurned = (LEAmount) * Number(newDuration)
+        MEABurned = (MEAmount) * Number(newDuration)
+        VEABurned = (VEAmount) * Number(newDuration)
+
+        const caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
+
+        const caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
+
+        console.log(LEAmount);
+        console.log(caloriesBurnedTotal);
+    }
+
+    async function addWorkouts() {
 		try {
 			const workoutsMain = {
 				newWorkout,
@@ -124,12 +155,24 @@ async function addWorkouts() {
             <input id="inputField" bind:value={newDuration} type="text" placeholder="Enter a Duration {enterNewDuration}" class="rounded">
             <input id="inputField" bind:value={newReps} type="text" placeholder="Enter amount of Reps {enterNewReps}" class="rounded">
         <br>
-			<button on:click={() => {addToList(), addWorkouts()}} id="addButton">Add</button>
+			<button on:click={() => {addToList(), calorieTracker(), addWorkouts(), clearStrings()}} id="addButton">Add</button>
 		</form>
+
+        <input type = "text" placeholder={LEAmount}>
+        <input type = "text" placeholder={LEABurned}>
+        <input type = "text" placeholder={MEAmount}>
+        <input type = "text" placeholder={MEABurned}>
+        <input type = "text" placeholder={VEAmount}>
+        <input type = "text" placeholder={VEABurned}>
+
+
 	</div>
 
     {#each (finalText) as allItems, index}
             <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
+    {/each}
+    {#each (finalText) as allItemsA, index}
+        <h1 class="text-center allItems">{allItems}<button id="removeItem" on:click={() => {removeFromList(index)}}> <img src="/images/X.png" alt="Remove Item" width="10" height="10"> </button></h1>
     {/each}
 
 </div>
@@ -215,6 +258,7 @@ async function addWorkouts() {
 		}
 	}
 	.allItems{
+        right: 10px;
 		font-size: 20px;
 		color:#fe6c3f;
         display: block;
