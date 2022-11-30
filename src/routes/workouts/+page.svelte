@@ -106,24 +106,21 @@
         //MEABurned = (MEAmount) * Number(newDuration)
         //VEABurned = (VEAmount) * Number(newDuration)
 
-        console.log("Hello");
         if (newIntensity == 0) {
             LEABurned = (LEAmount) * Number(newDuration)
-            caloriesText = Math.floor(LEABurned)
+            caloriesText = LEABurned
         } if (newIntensity == 50) {
             MEABurned = (MEAmount) * Number(newDuration)
-            caloriesText = Math.floor(MEABurned)
+            caloriesText = MEABurned
         } if (newIntensity == 100) {
             VEABurned = (VEAmount) * Number(newDuration)
-            caloriesText = Math.floor(VEABurned)
+            caloriesText = VEABurned
         }
 
         caloriesBurnedHolding = (LEABurned) + (MEABurned) + (VEABurned)
 
         caloriesBurnedTotal= (caloriesBurnedTotal) + (caloriesBurnedHolding)
 
-        console.log(LEAmount);
-        console.log(caloriesBurnedTotal);
     }
 
     async function addWorkouts() {
