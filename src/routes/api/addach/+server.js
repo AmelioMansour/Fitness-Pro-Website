@@ -17,12 +17,9 @@ export async function POST({ request, response }) {
 
     result.forEach(PrintItem => {
         passing.push(PrintItem.item);
-       
-
-
 
     })
     console.log(passing)
 
-    return new Response(passing)
+    return new Response(JSON.stringify(passing))
 }
