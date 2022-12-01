@@ -77,7 +77,7 @@
         } if (newIntensity == 50) {
             newIntensityType = "Moderate"
         } if (newIntensity > 50) {
-            newIntensityType = "Vigerous"
+            newIntensityType = "Vigorous"
         }
     }
 
@@ -89,7 +89,7 @@
     async function calorieTracker() {
         //low = 400/hr, LEAmount (Low Exercise Amount)
         //moderate = 500/hr, MEAmount (Moderate Exercise Amount)
-        //vigerous = 700/hr, VEAmount (Vigerous Exercise Amount)
+        //vigorous = 700/hr, VEAmount (Vigorous Exercise Amount)
         //LEABurned = (LEAmount) * Number(newDuration)
         //MEABurned = (MEAmount) * Number(newDuration)
         //VEABurned = (VEAmount) * Number(newDuration)
