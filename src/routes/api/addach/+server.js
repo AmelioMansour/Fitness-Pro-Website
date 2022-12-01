@@ -8,13 +8,18 @@ import { request } from 'express';
 
 
 
-export async function POST({ request }) {
+export async function POST({ request, response }) {
+
+
     const collection = client.db('FitnessPro').collection('Achievements');
-    const body = await request.json();
-    console.log(body);
+    const result = await collection.find({}).toArray();
+    let passing = []
 
-    await collection.insertOne(body)
+    result.forEach(PrintItem => {
+        passing.push(PrintItem.item);
 
-    return new Response()
+    })
+    console.log(passing)
 
+    return new Response(JSON.stringify(passing))
 }
